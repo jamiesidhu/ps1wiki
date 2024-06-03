@@ -1,0 +1,26 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>Create new Wiki page:</h1>
+
+    <div>
+        <form action="{% url 'newpage' %}" method="post">
+            {% csrf_token %}
+            <div style="color:crimson; font-size:xx-large">{{errMsg}}</div>
+            {% for field in form %}
+                <div class="form-group">
+                    <label class="control-label">{{ field.label }}</label> 
+                    <div class="controls">{{ field }}
+                    </div>
+                </div>
+            {% endfor %}
+            
+            <input class="btn btn-primary" type="submit">
+        </form>
+    </div>
+
+{% endblock %}
